@@ -3,6 +3,39 @@
 
 #include QMK_KEYBOARD_H
 
+// special german characters
+#define KC_SS RALT(KC_S)
+#define KC_UE RALT(KC_Y)
+#define KC_OE RALT(KC_P)
+#define KC_AE RALT(KC_Q)
+
+// shift characters
+#define KC_EXCL LSFT(KC_1)
+//#define KC_AT LSFT(KC_2)
+//#define KC_HASH LSFT(KC_3)
+//#define KC_DOLLAR LSFT(KC_4)
+#define KC_PERCNT LSFT(KC_5)
+#define KC_HAT LSFT(KC_6)
+#define KC_AND LSFT(KC_7)
+#define KC_STAR LSFT(KC_8)
+#define KC_LPARANTHESE LSFT(KC_9)
+#define KC_RPARANTHESE LSFT(KC_0)
+
+//#define KC_UNDERSCORE LSFT(KC_MINUS)
+//#define KC_PLUS LSFT(KC_EQUAL)
+#define KC_LBRACE LSFT(KC_LBRC)
+#define KC_RBRACE LSFT(KC_RBRC)
+//#define KC_PIPE LSFT(KC_BSLS)
+//#define KC_COLON LSFT(KC_SEMICOLON)
+#define KC_DQUOTE LSFT(KC_QUOTE)
+//#define KC_TILDE LSFT(KC_GRAVE)
+#define KC_LARROW LSFT(KC_COMMA)
+#define KC_RARROW LSFT(KC_DOT)
+//#define KC_QUESTION LSFT(KC_SLASH)
+
+#define KC_VI_ESC LCTL(KC_LBRC)
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
   //,----------------+----------------+----------------+----------------+----------------+----------------.                                     ,----------------+----------------+----------------+----------------+----------------+----------------.
@@ -12,33 +45,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
               XXXXXXX,            KC_Z,            KC_X,            KC_C,            KC_V,            KC_B,                                                  KC_N,            KC_M,        KC_COMMA,          KC_DOT,          KC_TAB,         XXXXXXX,
   //`----------------+----------------+----------------+----------------+----------------+----------------+----------------.   ,----------------+----------------+----------------+----------------+----------------+----------------+----------------'
-                                                                                   OSL(3),          OSL(2),   OSM(MOD_LSFT),       OSM(MOD_RSFT), LT(2, KC_SPACE),          OSL(3)
+                                                                                   OSL(3),          OSL(2),   OSM(MOD_LSFT),    LSFT_T(KC_VI_ESC), LT(2, KC_SPACE),          OSL(3)
   //                                                                    `----------------+----------------+----------------'   `----------------+----------------+----------------'
 
   ),
 
   [1] = LAYOUT_split_3x6_3(
   //,----------------+----------------+----------------+----------------+----------------+----------------.                                     ,----------------+----------------+----------------+----------------+----------------+----------------.
-            KC_ESCAPE,       KC_ESCAPE,      RALT(KC_S),      RALT(KC_Y),      RALT(KC_P),      RALT(KC_Q),                                            RALT(KC_Q),      RALT(KC_P),      RALT(KC_Y),      RALT(KC_S),         XXXXXXX,         XXXXXXX,
+            KC_ESCAPE,       KC_ESCAPE,           KC_SS,           KC_UE,           KC_OE,           KC_AE,                                                 KC_AE,           KC_AE,           KC_UE,           KC_SS,         XXXXXXX,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
               XXXXXXX,       KC_ESCAPE,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,                                               XXXXXXX,         KC_LCTL,         KC_LALT,         KC_LGUI,         KC_BSPC,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
               XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,                                               XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,          KC_TAB,         XXXXXXX,
   //`----------------+----------------+----------------+----------------+----------------+----------------+----------------.   ,----------------+----------------+----------------+----------------+----------------+----------------+----------------'
-                                                                                  XXXXXXX,         XXXXXXX,         XXXXXXX,             XXXXXXX,         XXXXXXX,         XXXXXXX
+                                                                                  XXXXXXX,         XXXXXXX,   OSM(MOD_LSFT),       OSM(MOD_RSFT),         XXXXXXX,         XXXXXXX
   //                                                                    `----------------+----------------+----------------'   `----------------+----------------+----------------'
 
   ),
 
   [2] = LAYOUT_split_3x6_3(
   //,----------------+----------------+----------------+----------------+----------------+----------------.                                     ,----------------+----------------+----------------+----------------+----------------+----------------.
-              XXXXXXX,      LSFT(KC_5),      LSFT(KC_9),      LSFT(KC_0),         KC_SCLN,      LSFT(KC_6),                                            LSFT(KC_7),  LSFT(KC_QUOTE),  LSFT(KC_COMMA),    LSFT(KC_DOT),        KC_QUOTE,         XXXXXXX,
+              XXXXXXX,       KC_PERCNT,  KC_LPARANTHESE,  KC_RPARANTHESE,         KC_SCLN,          KC_HAT,                                                KC_AND,       KC_DQUOTE,       KC_RARROW,       KC_LARROW,        KC_QUOTE,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
-              XXXXXXX,  LSFT(KC_SLASH), LGUI_T(KC_LBRC), LALT_T(KC_RBRC),           TD(0),        KC_SLASH,                                            LSFT(KC_3),RCTL_T(KC_EQUAL),           TD(1),           TD(2),      LSFT(KC_1),         XXXXXXX,
+              XXXXXXX,     KC_QUESTION, LGUI_T(KC_LBRC), LALT_T(KC_RBRC),LCTL_T(KC_COLON),        KC_SLASH,                                            LSFT(KC_3),RCTL_T(KC_EQUAL), RALT_T(KC_PLUS), RGUI_T(KC_STAR),         KC_EXCL,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
-              XXXXXXX,      LSFT(KC_2),   LSFT(KC_LBRC),   LSFT(KC_RBRC),      LSFT(KC_4),  LSFT(KC_GRAVE),                                              KC_MINUS,  LSFT(KC_MINUS),        KC_GRAVE,   LSFT(KC_BSLS),         KC_BSLS,         XXXXXXX,
+              XXXXXXX,           KC_AT,       KC_LBRACE,       KC_RBRACE,       KC_DOLLAR,        KC_TILDE,                                              KC_MINUS,   KC_UNDERSCORE,        KC_GRAVE,         KC_PIPE,         KC_BSLS,         XXXXXXX,
   //`----------------+----------------+----------------+----------------+----------------+----------------+----------------.   ,----------------+----------------+----------------+----------------+----------------+----------------+----------------'
-                                                                                  XXXXXXX,       KC_ESCAPE,         XXXXXXX,             XXXXXXX,        KC_ENTER,         XXXXXXX
+                                                                                  XXXXXXX,       KC_ESCAPE,         XXXXXXX,           KC_ESCAPE,        KC_ENTER,         XXXXXXX
   //                                                                    `----------------+----------------+----------------'   `----------------+----------------+----------------'
 
   ),
@@ -47,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----------------+----------------+----------------+----------------+----------------+----------------.                                     ,----------------+----------------+----------------+----------------+----------------+----------------.
               XXXXXXX,           KC_F1,           KC_F2,           KC_F3,           KC_F4,           KC_F5,                                                 KC_F6,           KC_F7,           KC_F8,           KC_F9,          KC_F10,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
-              XXXXXXX,            KC_1,            KC_2,            KC_3,            KC_4,            KC_5,                                                  KC_6,            KC_7,            KC_8,            KC_9,            KC_0,         XXXXXXX,
+              XXXXXXX,            KC_1,    LGUI_T(KC_2),    LALT_T(KC_3),    LCTL_T(KC_4),            KC_5,                                                  KC_6,    RCTL_T(KC_7),    LALT_T(KC_8),    RGUI_T(KC_9),            KC_0,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
               XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,                                               XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,
   //`----------------+----------------+----------------+----------------+----------------+----------------+----------------.   ,----------------+----------------+----------------+----------------+----------------+----------------+----------------'
@@ -60,11 +93,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----------------+----------------+----------------+----------------+----------------+----------------.                                     ,----------------+----------------+----------------+----------------+----------------+----------------.
               XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,                                               KC_HOME,         KC_PGDN,         KC_PGUP,          KC_END,         XXXXXXX,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
-              XXXXXXX,         XXXXXXX,         KC_LGUI,         KC_LALT,         KC_LCTL,         XXXXXXX,                                               KC_LEFT,         KC_DOWN,           KC_UP,        KC_RIGHT,         KC_BSPC,         XXXXXXX,
+              XXXXXXX,         XXXXXXX,         KC_LGUI,         KC_LALT,        KC_LCTL,         XXXXXXX,                                               KC_LEFT,         KC_DOWN,           KC_UP,        KC_RIGHT,         KC_BSPC,         XXXXXXX,
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
               XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,                                               XXXXXXX,       KC_ESCAPE,   LCTL(KC_LBRC),         XXXXXXX,          KC_TAB,         XXXXXXX,
   //`----------------+----------------+----------------+----------------+----------------+----------------+----------------.   ,----------------+----------------+----------------+----------------+----------------+----------------+----------------'
-                                                                                  XXXXXXX,         XXXXXXX,         XXXXXXX,             XXXXXXX,         XXXXXXX,         XXXXXXX
+                                                                                  XXXXXXX,         XXXXXXX,   OSM(MOD_LSFT),       OSM(MOD_RSFT),         XXXXXXX,         XXXXXXX
   //                                                                    `----------------+----------------+----------------'   `----------------+----------------+----------------'
 
   ),
@@ -77,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|----------------+----------------+----------------+----------------+----------------+----------------|                                     |----------------+----------------+----------------+----------------+----------------+----------------|
               XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,                                               KC_ACL0,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,         XXXXXXX,
   //`----------------+----------------+----------------+----------------+----------------+----------------+----------------.   ,----------------+----------------+----------------+----------------+----------------+----------------+----------------'
-                                                                                  XXXXXXX,         XXXXXXX,         XXXXXXX,             XXXXXXX,         XXXXXXX,         XXXXXXX
+                                                                                  XXXXXXX,         XXXXXXX,   OSM(MOD_LSFT),       OSM(MOD_RSFT),         XXXXXXX,         XXXXXXX
   //                                                                    `----------------+----------------+----------------'   `----------------+----------------+----------------'
 
   ),
@@ -213,3 +246,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // fix mod-tap keys with shifted or other modifier keys
+    // see: https://docs.qmk.fm/mod_tap
+    switch (keycode) {
+        case LCTL_T(KC_COLON):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_COLON); // Send KC_DQUO on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case RALT_T(KC_PLUS):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_PLUS); // Send KC_DQUO on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case RGUI_T(KC_STAR):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_STAR); // Send KC_DQUO on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case LSFT_T(KC_VI_ESC):
+            if (record->tap.count && record->event.pressed) {
+                tap_code16(KC_VI_ESC); // Send KC_DQUO on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+    }
+    return true;
+}
